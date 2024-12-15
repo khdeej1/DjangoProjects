@@ -1,0 +1,13 @@
+-- database: ./db.sqlite3
+
+insert into bookmodule_address (city) values ('California');
+insert into bookmodule_address (city) values ('Texas');
+insert into bookmodule_address (city) values ('California');
+insert into bookmodule_address (city) values ('Pennsylvania');
+insert into bookmodule_address (city) values ('California');
+insert into bookmodule_address (city) values ('Tennessee');
+insert into bookmodule_address (city) values ('Maryland');
+insert into bookmodule_address (city) values ('Massachusetts');
+insert into bookmodule_address (city) values ('Alabama');
+insert into bookmodule_address (city) values ('Missouri');
+

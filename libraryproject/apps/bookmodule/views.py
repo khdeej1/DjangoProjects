@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-from .models import Book
+from django.db.models import Q, Min, Max, Sum, Avg,Count
+from .models import Address, Book, Student
 
 # Create your views here.
 def index(request):
@@ -66,3 +66,46 @@ def complex_query(request):
         return render(request, 'bookmodule/bookList.html', {'books':mybooks})
     else:
         return render(request, 'bookmodule/index.html')
+
+def task1(request):
+    bks = Book.objects.filter(Q(price__lte = 50))
+    if len(bks)>=1:
+        return render(request, 'bookmodule/bookList.html', {'books':bks})
+    else:
+        return render(request, 'bookmodule/index.html')
+
+# books that have editions higher than two and either the title or author of the book contains the two adjacent letters ‘qu’ 
+def task2(request):
+    bks = Book.objects.filter(Q(edition__gt = 2) & (Q(title__icontains="qu") | Q(author__icontains="qu")))
+    if len(bks)>=1:
+        return render(request, 'bookmodule/bookList.html', {'books':bks})
+    else:
+        return render(request, 'bookmodule/index.html')
+
+def task3(request):
+    bks = Book.objects.filter(~Q(edition__gt = 2) & (~Q(title__icontains="qu") | ~Q(author__icontains="qu")))
+    if len(bks)>=1:
+        return render(request, 'bookmodule/bookList.html', {'books':bks})
+    else:
+        return render(request, 'bookmodule/index.html')
+
+
+def task4(request):
+    bks = Book.objects.all().order_by("title")
+    return render(request, 'bookmodule/bookList.html', {'books':bks})
+
+# number of books, total price of all books, average price, maximum price, and minimum price 
+def task5(request):
+   
+    query = Book.objects.aggregate( numBooks = Count('title'),  totPrice = Sum('price' , default=0)
+    ,avgPrice = Avg('price' , default=0)
+    ,maxPrice = Max('price' , default=0)
+    ,minPrice = Min('price' , default=0))
+
+    return render(request, 'bookmodule/task5.html', {'statistics':query})
+
+
+def showStudentsInCity(request):
+    students_per_city = Address.objects.annotate(student_count=Count('student'))
+    return render(request, 'bookmodule/task7.html', {'data':students_per_city})
+

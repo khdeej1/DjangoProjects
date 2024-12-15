@@ -1,0 +1,10 @@
+insert into Address (city) values ('California');
+insert into Address (city) values ('Texas');
+insert into Address (city) values ('California');
+insert into Address (city) values ('Pennsylvania');
+insert into Address (city) values ('California');
+insert into Address (city) values ('Tennessee');
+insert into Address (city) values ('Maryland');
+insert into Address (city) values ('Massachusetts');
+insert into Address (city) values ('Alabama');
+insert into Address (city) values ('Missouri');

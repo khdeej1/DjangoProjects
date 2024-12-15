@@ -1,0 +1,23 @@
+-- database: ./db.sqlite3
+
+
+insert into bookmodule_student (name, age, address_id) values ('Nananne', 33, 8);
+insert into bookmodule_student (name, age, address_id) values ('Alick', 24, 7);
+insert into bookmodule_student (name, age, address_id) values ('Viviene', 23, 4);
+insert into bookmodule_student (name, age, address_id) values ('Roddie', 34, 6);
+insert into bookmodule_student (name, age, address_id) values ('Rancell', 36, 1);
+insert into bookmodule_student (name, age, address_id) values ('Georas', 25, 5);
+insert into bookmodule_student (name, age, address_id) values ('Dorothee', 23, 5);
+insert into bookmodule_student (name, age, address_id) values ('Ruthy', 31, 3);
+insert into bookmodule_student (name, age, address_id) values ('Yolanda', 19, 7);
+insert into bookmodule_student (name, age, address_id) values ('Erny', 20, 6);
+insert into bookmodule_student (name, age, address_id) values ('Jamima', 40, 3);
+insert into bookmodule_student (name, age, address_id) values ('Agace', 23, 1);
+insert into bookmodule_student (name, age, address_id) values ('Kathryn', 32, 6);
+insert into bookmodule_student (name, age, address_id) values ('Alard', 31, 3);
+insert into bookmodule_student (name, age, address_id) values ('Kerry', 25, 10);
+insert into bookmodule_student (name, age, address_id) values ('Doti', 22, 4);
+insert into bookmodule_student (name, age, address_id) values ('Cherianne', 23, 3);
+insert into bookmodule_student (name, age, address_id) values ('Kalvin', 39, 4);
+insert into bookmodule_student (name, age, address_id) values ('Tim', 18, 9);
+insert into bookmodule_student (name, age, address_id) values ('Carl', 25, 4);
