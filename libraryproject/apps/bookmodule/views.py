@@ -22,3 +22,9 @@ def viewbook(request, bookId):
     return render(request, 'bookmodule/show.html', context)
 def listbooks(request):
     return render(request, 'bookmodule/listbooks.html')
+
+def viewbook(request, bookId):
+    return render(request, 'bookmodule/one_book.html')
+
+def aboutus(request):
+    return render(request, 'bookmodule/aboutus.html')
