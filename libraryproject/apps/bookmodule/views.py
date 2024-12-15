@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import Book
+
 # Create your views here.
 def index(request):
     name = request.GET.get("name") or "world!"
@@ -54,3 +56,13 @@ def findBook(request):
                 if contained: newBooks.append(item)
             return render(request, 'bookmodule/bookList.html', {'books':newBooks})
  
+def simple_query(request):
+    mybooks=Book.objects.filter(title__icontains='of') # <- multiple objects
+    return render(request, 'bookmodule/bookList.html', {'books':mybooks})
+
+def complex_query(request):
+    mybooks=books=Book.objects.filter(author__isnull = False).filter(title__icontains='of').filter(edition__gte = 2).exclude(price__lte = 100)[:10]
+    if len(mybooks)>=1:
+        return render(request, 'bookmodule/bookList.html', {'books':mybooks})
+    else:
+        return render(request, 'bookmodule/index.html')

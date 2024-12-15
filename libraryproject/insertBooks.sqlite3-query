@@ -1,0 +1,23 @@
+-- database: ./db.sqlite3
+
+insert into bookmodule_book (title, author, price, edition) values ('Inherit the Wind', 'Timoteo', 507.64, 19);
+insert into bookmodule_book (title, author, price, edition) values ('No Looking Back', 'Tasha', 585.94, 13);
+insert into bookmodule_book (title, author, price, edition) values ('Secrets of the Tribe', 'Agnella', 738.51, 16);
+insert into bookmodule_book (title, author, price, edition) values ('Angels with Dirty Faces', 'Ludwig', 127.24, 12);
+insert into bookmodule_book (title, author, price, edition) values ('To Die Like a Man (Morrer Como Um Homem)', 'Dorolice', 176.22, 8);
+insert into bookmodule_book (title, author, price, edition) values ('Scary Movie 3', 'Kory', 705.23, 12);
+insert into bookmodule_book (title, author, price, edition) values ('Anthony Zimmer', 'Derry', 166.73, 3);
+insert into bookmodule_book (title, author, price, edition) values ('Held Up', 'Mel', 390.34, 13);
+insert into bookmodule_book (title, author, price, edition) values ('Catwoman', 'Darby', 704.38, 15);
+insert into bookmodule_book (title, author, price, edition) values ('Heckler', 'Tiffani', 942.93, 9);
+insert into bookmodule_book (title, author, price, edition) values ('Palmetto', 'Lucy', 523.41, 10);
+insert into bookmodule_book (title, author, price, edition) values ('Bad 25', 'Kenna', 926.53, 7);
+insert into bookmodule_book (title, author, price, edition) values ('Black Sea', 'Darby', 457.93, 3);
+insert into bookmodule_book (title, author, price, edition) values ('I, Frankenstein', 'Jaclin', 270.31, 15);
+insert into bookmodule_book (title, author, price, edition) values ('Kiss Me, Stupid', 'Abbi', 428.24, 9);
+insert into bookmodule_book (title, author, price, edition) values ('Bird with the Crystal Plumage, The (Uccello dalle piume di cristallo, L'')', 'Jojo', 728.72, 10);
+insert into bookmodule_book (title, author, price, edition) values ('Art of War II: Betrayal, The', 'Alfreda', 872.29, 9);
+insert into bookmodule_book (title, author, price, edition) values ('This Man Must Die (Que la bête meure)', 'Colline', 798.4, 15);
+insert into bookmodule_book (title, author, price, edition) values ('Nancy Drew: Detective', 'Torey', 131.24, 4);
+insert into bookmodule_book (title, author, price, edition) values ('Ronal the Barbarian', 'Olenka', 19.79, 13);
+

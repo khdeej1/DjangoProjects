@@ -7,4 +7,6 @@ path('listbooks/', views.listbooks, name= "books.listbooks"),
 path('<int:bookId>', views.viewbook,name="viewbook"),
 path('searchBook/', views.searchBook,name="searchBook"),
 path('findBook/', views.findBook,name="books.findBook"),
+path('simpleQuery/', views.simple_query,name="books.simpleQuery"),
+path('complex_query/', views.complex_query,name="books.complex_query"),
 ]
