@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.db.models import Q, Min, Max, Sum, Avg,Count
 from .models import Address, Book, Student, Student2
-from .forms import BookForm, StudentForm,StudentForm2
+from .forms import BookForm, StudentForm,StudentForm2, StudentWithImageForm
 
 # Create your views here.
 def index(request):
@@ -240,3 +240,20 @@ def deleteStudent2(request, student_id):
         obj.delete()
         return redirect('students2.listStudents')
     return render(request, 'bookmodule/students2/deleteStudent.html', {'student': obj})
+
+
+
+def addStudentWithImage(request):
+    if request.method == 'POST':
+        form = StudentWithImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('students.listStudentsWithImage')
+    else:
+        form = StudentWithImageForm()
+    return render(request, 'bookmodule/students_with_image/add_student.html', {'form': form})
+
+def listStudentsWithImage(request):
+    from .models import StudentWithImage
+    students = StudentWithImage.objects.all()
+    return render(request, 'bookmodule/students_with_image/list_students.html', {'students': students})

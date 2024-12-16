@@ -30,4 +30,6 @@ path('deleteBook/<int:book_id>', views.deleteBook, name="books.deleteBook"),
     path('students2/addStudent', views.addStudent2, name='students2.addStudent'),
     path('students2/editStudent/<int:student_id>', views.editStudent2, name='students2.editStudent'),
     path('students2/deleteStudent/<int:student_id>', views.deleteStudent2, name='students2.deleteStudent'),
+     path('students_with_image/add', views.addStudentWithImage, name='students.addStudentWithImage'),
+    path('students_with_image/list', views.listStudentsWithImage, name='students.listStudentsWithImage'),
 ]

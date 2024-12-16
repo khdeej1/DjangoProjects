@@ -1,0 +1,12 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Add Student With Image{% endblock title %}
+
+{% block content %}
+<h1>Add Student With Image</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Student</button>
+</form>
+{% endblock content %}

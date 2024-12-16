@@ -1,6 +1,6 @@
 # apps/bookmodule/forms.py
 from django import forms
-from .models import Address, Book,Student,Student2
+from .models import Address, Book,Student,Student2,StudentWithImage
 
 class BookForm(forms.ModelForm):
     class Meta:
@@ -86,3 +86,10 @@ class StudentForm2(forms.ModelForm):
         label="Age",
         initial=20
     )
+
+
+
+class StudentWithImageForm(forms.ModelForm):
+    class Meta:
+        model = StudentWithImage
+        fields = ['name', 'age', 'profile_image']

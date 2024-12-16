@@ -1,0 +1,19 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}List of Students With Images{% endblock title %}
+
+{% block content %}
+<h1>List of Students With Images</h1>
+<a href="{% url 'students.addStudentWithImage' %}">Add Student</a>
+<ul>
+{% for s in students %}
+  <li>
+    {{ s.name }} (Age: {{ s.age }})
+    {% if s.profile_image %}
+      <br>
+      <img src="{{ s.profile_image.url }}" alt="{{ s.name }}" style="max-width:200px;max-height:200px;">
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>
+{% endblock content %}

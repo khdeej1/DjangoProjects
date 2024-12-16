@@ -27,3 +27,12 @@ class Student2(models.Model):
 
 
 
+
+
+class StudentWithImage(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.PositiveIntegerField(default=20)
+    profile_image = models.ImageField(upload_to='student_images/')
+
+    def __str__(self):
+        return self.name
