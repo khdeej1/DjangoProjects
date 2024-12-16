@@ -1,16 +1,143 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1 {
+    color: #28a745;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+h2 {
+    color: #007bff;
+    font-size: 1.5em;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Container for the book list */
+.book-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Each book entry */
+.book-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-item:last-child {
+    border-bottom: none;
+}
+
+/* Link styling for book titles */
+.book-item a.book-title {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.book-item a.book-title:hover {
+    color: #0056b3;
+}
+
+/* Button styling */
+.btn {
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin: 0 5px;
+    transition: background 0.3s ease;
+    color: #ffffff;
+}
+
+.btn:hover {
+    text-decoration: none;
+    opacity: 0.9;
+}
+
+.btn-add {
+    background: #28a745; /* Green */
+}
+
+.btn-edit {
+    background: #ffc107; /* Yellow */
+    color: #000;
+}
+
+.btn-delete {
+    background: #dc3545; /* Red */
+}
+
+/* Container for the heading and add button */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Top navigation styling */
 .topnav {
-    background-color: #eeeeee;
-    width: 100%;
-    }
-    /* Style the links inside the navigation bar */
-    .topnav a {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.topnav a {
     color: #000000;
     text-align: center;
     margin-right: 25px;
     text-decoration: none;
     font-size: 17px;
-    }
-    /* Add a color to the active/current link */
-    .topnav a.active{
-    color: #008CBA;
-    }
+    padding: 8px 0;
+    transition: color 0.3s ease;
+}
+
+.topnav a:hover {
+    color: #007bff;
+}
+
+.topnav a.active {
+    color: #007bff;
+    font-weight: 600;
+    border-bottom: 2px solid #007bff;
+}
+.btn-back {
+    background-color: #ccc;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .btn-back:hover {
+    background-color: #bbb;
+  }
+  

@@ -4,7 +4,7 @@ urlpatterns = [
 path('', views.index, name= "books.index"),
 path('index2/<int:val1>/', views.index2),
 path('listbooks/', views.listbooks, name= "books.listbooks"),
-path('<int:bookId>', views.viewbook,name="viewbook"),
+path('<int:bookId>', views.viewbook,name="books.viewBook"),
 path('searchBook/', views.searchBook,name="searchBook"),
 path('findBook/', views.findBook,name="books.findBook"),
 path('simpleQuery/', views.simple_query,name="books.simpleQuery"),
@@ -15,4 +15,7 @@ path('task3/', views.task3,name="books.task3"),
 path('task4/', views.task4,name="books.task4"),
 path('task5/', views.task5,name="books.task5"),
 path('task7/', views.showStudentsInCity,name="books.task7"),
+path('addBook', views.addBook, name="books.addBook"),
+path('updateBook/<int:book_id>', views.updateBook, name="books.updateBook"),
+path('deleteBook/<int:book_id>', views.deleteBook, name="books.deleteBook")
 ]

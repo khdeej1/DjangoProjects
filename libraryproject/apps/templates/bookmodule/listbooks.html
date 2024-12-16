@@ -1,32 +1,35 @@
-<style> /* add internal css */
-    h1{
-    color: green;
-    }
-    h2{
-    color: lightskyblue;
-    }
-    p {
-    font-family: verdana;
-    font-size: 20px;
-    }
-    </style>
-    <link rel="stylesheet" href="styles.css"> <!-- include css file -->
-    </head>
-    <body>
-    <div class="topnav"> <!-- add attribute class -->
-    <a href="index.html">Home</a>
-    <a class="active" href="list_books.html">List Books</a>
-    <a href="aboutus.html">About</a>
+
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} List of books {% endblock title %}
+ 
+{% block content %}
+<div class="book-container">
+    <div class="header-row">
+        <h1>List of Books</h1>
+        <a class="btn btn-add" href="{% url 'books.addBook' %}">
+            <i class="fa fa-plus"></i> Add Book
+        </a>
     </div>
-<a href="one_book.html"><h2>Internet & World Wide Web How to Program</h2></a>
-<a href="one_book.html"><img src="book1.jpg" alt="Book1 img desc" width="200"
-height="200"></a>
-<hr>
-<h2>2) C++ How to Program, Late Objects Version</h2>
-<img src="book2.jpg" alt="Book2 img desc" width="200" height="200">
-<hr>
-<h2>3) Images in Another Folder</h2>
-<img src="book3.jpg" alt="Book3 img desc" width="200" height="200">
-<hr>
-</body>
-</html>
+
+    {% if books %}
+        {% for book in books %}
+        <div class="book-item">
+            <a class="book-title" href="{% url 'books.viewBook' book.id %}">
+                <h2>{{ book.title }}</h2>
+            </a>
+            <div class="book-actions">
+                <a class="btn btn-edit" href="{% url 'books.updateBook' book.id %}">
+                    <i class="fa fa-pencil"></i> Edit
+                </a>
+                <a class="btn btn-delete" href="{% url 'books.deleteBook' book.id %}">
+                    <i class="fa fa-trash"></i> Delete
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No books found</p>
+    {% endif %}
+</div>
+{% endblock content %}

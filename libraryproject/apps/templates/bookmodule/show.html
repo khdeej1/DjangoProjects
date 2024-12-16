@@ -1,6 +1,22 @@
-<h4>ID: {{ book.id }}</h4>  
-<h4>Title: {{ book.title }}</h4> 
-<h4>Authors</h4>
-<p>{{ book.author }}</p> 
-<h4>Description</h4> 
-<p>Description here</p>
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %}Book Details{% endblock title %}
+
+{% block content %}
+<div class="book-details">
+    <h2>{{ book.title }}</h2>
+
+    <ul>
+        <li><strong>ID:</strong> {{ book.id }}</li>
+        <li><strong>Author:</strong> {{ book.author }}</li>
+        {% if book.edition %}
+            <li><strong>Edition:</strong> {{ book.edition }}</li>
+        {% endif %}
+        {% if book.price %}
+            <li><strong>Price:</strong> ${{ book.price }}</li>
+        {% endif %}
+    </ul>
+
+        <a class="btn btn-back" href="{% url 'books.listbooks' %}">Back to List</a>
+</div>
+{% endblock content %}

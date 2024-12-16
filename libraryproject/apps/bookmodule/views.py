@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.db.models import Q, Min, Max, Sum, Avg,Count
 from .models import Address, Book, Student
@@ -14,19 +14,16 @@ def index2(request, val1 = 0):   #add the view function (index2)
 
 
 def viewbook(request, bookId):
-    # assume that we have the following books somewhere (e.g. database)
-    book1 = {'id':123, 'title':'Continuous Delivery', 'author':'J. Humble and D. Farley'}
-    book2 = {'id':456, 'title':'Secrets of Reverse Engineering', 'author':'E. Eilam'}
-    targetBook = None
-    if book1['id'] == bookId: targetBook = book1
-    if book2['id'] == bookId: targetBook = book2
-    context = {'book':targetBook} # book is the variable name accessible by the template
-    return render(request, 'bookmodule/show.html', context)
-def listbooks(request):
-    return render(request, 'bookmodule/listbooks.html')
+    print(bookId)
+    targetBook = Book.objects.get(id=bookId)
+    # print_list(targetBook)
+    # book is the variable name accessible by the template
+    return render(request, 'bookmodule/show.html', {'book':targetBook})
 
-def viewbook(request, bookId):
-    return render(request, 'bookmodule/one_book.html')
+def listbooks(request):
+    bks = Book.objects.all()
+    return render(request, 'bookmodule/listbooks.html',{'books':bks})
+
 
 def aboutus(request):
     return render(request, 'bookmodule/aboutus.html')
@@ -109,3 +106,39 @@ def showStudentsInCity(request):
     students_per_city = Address.objects.annotate(student_count=Count('student'))
     return render(request, 'bookmodule/task7.html', {'data':students_per_city})
 
+def addBook(request):
+    if request.method=='POST':
+        title=request.POST.get('title')
+        price=request.POST.get('price')
+        edition=request.POST.get('edition')
+        author=request.POST.get('author')
+        obj = Book(title=title, price = float(price),edition = edition, author = author)
+        obj.save()
+        return redirect('books.viewBook', bookId=obj.id)
+    return render(request, "bookmodule/addBook.html")
+
+
+def updateBook(request, book_id):
+    obj = Book.objects.get(id=book_id)
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        price = request.POST.get('price')
+        edition = request.POST.get('edition')
+        author = request.POST.get('author')
+        obj.title = title
+        obj.price = float(price)
+        obj.edition = int(edition)
+        obj.author = author
+        obj.save()
+        # After updating, redirect to the book detail view
+        return redirect('books.viewBook', bookId=book_id)
+    # For GET, you might want to show a form template, not 'listBooks.html'
+    return render(request, "bookmodule/updateBook.html", {'book': obj})
+
+
+def deleteBook(request,book_id):
+    obj = Book.objects.get(id = book_id)
+    if request.method=="POST" :
+        obj.delete()
+        return redirect('books.listbooks')
+    return render(request, "bookmodule/deleteBook.html",{'obj':obj})
