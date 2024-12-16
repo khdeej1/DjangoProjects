@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.db.models import Q, Min, Max, Sum, Avg,Count
 from .models import Address, Book, Student, Student2
 from .forms import BookForm, StudentForm,StudentForm2, StudentWithImageForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -175,6 +176,8 @@ def lab9_part2_deletebook(request, book_id):
         obj.delete()
         return redirect('lab9_part2.listbooks')
     return render(request, 'bookmodule/lab9_part2_deletebook.html', {'book': obj})
+
+@login_required(login_url='/users/login')
 def listStudents(request):
     students = Student.objects.all()
     return render(request, 'bookmodule/students/listStudents.html', {'students': students})
