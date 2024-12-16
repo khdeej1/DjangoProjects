@@ -1,0 +1,15 @@
+{% extends "layouts/base.html" %}
+{% block title %}List of Books (Part 2){% endblock title %}
+
+{% block content %}
+<h1>List of Books (Part 2)</h1>
+<a href="{% url 'lab9_part2.addbook' %}">Add Book</a>
+<ul>
+{% for b in books %}
+  <li>{{ b.title }} by {{ b.author }} - ${{ b.price }} (Edition: {{ b.edition }})
+    <a href="{% url 'lab9_part2.editbook' b.id %}">Edit</a>
+    <a href="{% url 'lab9_part2.deletebook' b.id %}">Delete</a>
+  </li>
+{% endfor %}
+</ul>
+{% endblock content %}

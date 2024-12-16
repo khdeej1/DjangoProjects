@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.db.models import Q, Min, Max, Sum, Avg,Count
 from .models import Address, Book, Student
+from .forms import BookForm
 
 # Create your views here.
 def index(request):
@@ -142,3 +143,35 @@ def deleteBook(request,book_id):
         obj.delete()
         return redirect('books.listbooks')
     return render(request, "bookmodule/deleteBook.html",{'obj':obj})
+
+def lab9_part2_listbooks(request):
+    books = Book.objects.all()
+    return render(request, 'bookmodule/lab9_part2_listbooks.html', {'books': books})
+
+def lab9_part2_addbook(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lab9_part2.listbooks')
+    else:
+        form = BookForm()
+    return render(request, 'bookmodule/lab9_part2_addbook.html', {'form': form})
+
+def lab9_part2_editbook(request, book_id):
+    obj = Book.objects.get(id=book_id)
+    if request.method == 'POST':
+        form = BookForm(request.POST, instance=obj)
+        if form.is_valid():
+            form.save()
+            return redirect('lab9_part2.listbooks')
+    else:
+        form = BookForm(instance=obj)
+    return render(request, 'bookmodule/lab9_part2_editbook.html', {'form': form, 'book': obj})
+
+def lab9_part2_deletebook(request, book_id):
+    obj = Book.objects.get(id=book_id)
+    if request.method == 'POST':
+        obj.delete()
+        return redirect('lab9_part2.listbooks')
+    return render(request, 'bookmodule/lab9_part2_deletebook.html', {'book': obj})

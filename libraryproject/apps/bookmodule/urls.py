@@ -17,5 +17,9 @@ path('task5/', views.task5,name="books.task5"),
 path('task7/', views.showStudentsInCity,name="books.task7"),
 path('addBook', views.addBook, name="books.addBook"),
 path('updateBook/<int:book_id>', views.updateBook, name="books.updateBook"),
-path('deleteBook/<int:book_id>', views.deleteBook, name="books.deleteBook")
+path('deleteBook/<int:book_id>', views.deleteBook, name="books.deleteBook"),
+ path('lab9_part2/listbooks', views.lab9_part2_listbooks, name='lab9_part2.listbooks'),
+    path('lab9_part2/addbook', views.lab9_part2_addbook, name='lab9_part2.addbook'),
+    path('lab9_part2/editbook/<int:book_id>', views.lab9_part2_editbook, name='lab9_part2.editbook'),
+    path('lab9_part2/deletebook/<int:book_id>', views.lab9_part2_deletebook, name='lab9_part2.deletebook'),
 ]
